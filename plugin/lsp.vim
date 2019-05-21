@@ -18,6 +18,7 @@ if executable('gopls')
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'go-lang',
                     \ 'cmd': {server_info->['gopls']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))},
                     \ 'whitelist': ['go'],
                     \ })
         autocmd FileType go setlocal omnifunc=lsp#complete
