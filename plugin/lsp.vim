@@ -5,6 +5,7 @@ let g:lsp_signs_error = {'text': 'x'}
 let g:lsp_signs_warning = {'text': '△'}
 let g:lsp_signs_information = {'text': '!'}
 let g:lsp_signs_hint = {'text': '!!'}
+let g:lsp_async_completion = 1
 
 highlight link LspErrorText GruvboxRedSign
 
