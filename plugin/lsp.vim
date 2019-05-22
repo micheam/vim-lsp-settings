@@ -5,7 +5,7 @@ let g:lsp_signs_error = {'text': 'x'}
 let g:lsp_signs_warning = {'text': '△'}
 let g:lsp_signs_information = {'text': '!'}
 let g:lsp_signs_hint = {'text': '!!'}
-let g:lsp_async_completion = 1
+let g:lsp_async_completion = 0
 
 highlight link LspErrorText GruvboxRedSign
 
@@ -27,7 +27,6 @@ if executable('gopls')
         "autocmd FileType go nmap <buffer> ,n <plug>(lsp-next-error)
         "autocmd FileType go nmap <buffer> ,p <plug>(lsp-previous-error)
     augroup END
-    :echomsg "vim-lsp with `gopls` enabled"
 elseif executable('bingo')
     augroup LspGo
         au!
@@ -38,11 +37,8 @@ elseif executable('bingo')
                     \ })
         autocmd FileType go setlocal omnifunc=lsp#complete
     augroup END
-    :echomsg "vim-lsp with `bingo` enabled"
-
 else
     :echomsg "vim-lsp for go unavailable"
-
 endif
 
 " typescript {{{2
@@ -57,7 +53,6 @@ if executable('typescript-language-server')
                     \ })
         autocmd FileType typescript setlocal omnifunc=lsp#complete
     augroup END
-    :echomsg "vim-lsp with `typescript-language-server` enabled"
 else
     :echomsg "vim-lsp for typescript unavailable"
 endif
@@ -74,7 +69,6 @@ if executable('vls')
                     \ })
         autocmd FileType vue setlocal omnifunc=lsp#complete
     augroup END
-    :echomsg "vim-lsp setting for vue enabled"
 else
     :echomsg "vim-lsp for vue unavailable"
 endif
