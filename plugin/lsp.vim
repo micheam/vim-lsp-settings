@@ -41,6 +41,22 @@ else
     :echomsg "vim-lsp for go unavailable"
 endif
 
+" javascript {{{2
+if executable('typescript-language-server')
+    augroup LspJavascript
+        au!
+        autocmd User lsp_setup call lsp#register_server({
+                    \ 'name': 'javascript-language-server',
+                    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+                    \ 'whitelist': ['javascript', 'javascript.jsx'],
+                    \ })
+        autocmd FileType javascript setlocal omnifunc=lsp#complete
+    augroup END
+else
+    :echomsg "vim-lsp for javascript unavailable"
+endif
+
 " typescript {{{2
 if executable('typescript-language-server')
     augroup LspTypeScript
@@ -58,7 +74,6 @@ else
 endif
 
 " vue {{{2
- 
 if executable('vls')
     augroup LspVue
         au!
