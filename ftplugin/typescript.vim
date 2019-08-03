@@ -7,8 +7,6 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 imap <c-space> <Plug>(asyncomplete_force_refresh)
 "autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
-highlight link LspErrorText GruvboxRedSign
-
 " key mapps {{{
 "   To map keys to the feature of vim-lsp, use <plug> mappings:
 "   autocmd FileType python,go nmap gd <plug>(lsp-definition)
