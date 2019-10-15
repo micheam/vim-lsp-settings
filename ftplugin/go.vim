@@ -18,8 +18,10 @@ nmap <buffer> <C-]> <Plug>(lsp-definition)
 " nmap <buffer> XX <plug>(lsp-document-symbol)
 " nmap <buffer> XX <plug>(lsp-document-diagnostics)
 nmap <buffer> K <Plug>(lsp-hover)
-nmap <buffer> <C-n> <plug>(lsp-next-error)
-nmap <buffer> <C-p> <plug>(lsp-previous-error)
+
+nmap <buffer> <C-n> <Plug>(lsp-next-reference)
+nmap <buffer> <C-p> <Plug>(lsp-previous-reference)
+
 nmap <buffer> <S-F12> <plug>(lsp-references)
 nmap <buffer> <S-F6> <plug>(lsp-rename)
 " nmap <buffer> XX <plug>(lsp-workspace-symbol)
@@ -28,4 +30,5 @@ nmap <buffer> <F11> <plug>(lsp-implementation)
 nmap <buffer> <F2> <plug>(lsp-type-definition)
 " nmap <buffer> XX <plug>(lsp-status)
 " nmap <buffer> XX <plug>(lsp-code-action)
+
 
