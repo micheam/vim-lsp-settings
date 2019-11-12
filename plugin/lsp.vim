@@ -35,6 +35,16 @@ if executable('gopls')
                     \ 'cmd': {server_info->['gopls']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))},
                     \ 'whitelist': ['go'],
+                    \ 'workspace_config': {'gopls': {
+                    \     'staticcheck': v:false,
+                    \     'completeUnimported': v:true,
+                    \     'caseSensitiveCompletion': v:true,
+                    \     'usePlaceholders': v:true,
+                    \     'completionDocumentation': v:true,
+                    \     'watchFileChanges': v:true,
+                    \     'hoverKind': 'SynopsisDocumentation',
+                    \     'deepCompletion': v:true,
+                    \ }},
                     \ })
         autocmd FileType go setlocal omnifunc=lsp#complete
         "autocmd FileType go nmap <buffer> gd <plug>(lsp-definition)
