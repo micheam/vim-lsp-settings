@@ -57,6 +57,7 @@ elseif executable('bingo')
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'go-lang',
                     \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
+                    \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
                     \ 'whitelist': ['go'],
                     \ })
         autocmd FileType go setlocal omnifunc=lsp#complete
@@ -96,19 +97,3 @@ if executable('typescript-language-server')
 else
     :echomsg "vim-lsp for typescript unavailable"
 endif
-
-" vue {{{2
-if executable('vls')
-    augroup LspVue
-        au!
-        autocmd User lsp_setup call lsp#register_server({
-                    \ 'name': 'vue',
-                    \ 'cmd': {server_info->['vls']},
-                    \ 'whitelist': ['vue'],
-                    \ })
-        autocmd FileType vue setlocal omnifunc=lsp#complete
-    augroup END
-else
-    :echomsg "vim-lsp for vue unavailable"
-endif
-
