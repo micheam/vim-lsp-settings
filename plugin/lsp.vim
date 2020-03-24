@@ -19,6 +19,7 @@ let g:lsp_async_completion = 1
 
 " highlight {{{1
 " ==============================================================================
+highlight LspErrorHighlight term=underline cterm=underline gui=underline
 highlight link LspErrorText GruvboxRedSign
 highlight lspReference term=underline cterm=underline
 
