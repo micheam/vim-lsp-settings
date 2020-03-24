@@ -22,6 +22,14 @@ let g:lsp_async_completion = 1
 highlight link LspErrorText GruvboxRedSign
 highlight lspReference term=underline cterm=underline
 
+highlight PopupWindow ctermfg=LightCyan ctermbg=Magenta guibg=NONE guifg=LightCyan
+augroup lsp_float_colours
+    autocmd!
+    autocmd User lsp_float_opened
+                \ call win_execute(lsp#ui#vim#output#getpreviewwinid(),
+                \		       'setlocal wincolor=PopupWindow')
+augroup end
+
 " filetypes {{{1
 " ==============================================================================
 
@@ -97,3 +105,16 @@ if executable('typescript-language-server')
 else
     :echomsg "vim-lsp for typescript unavailable"
 endif
+
+" efm {{{2
+if executable('efm-langserver')
+  augroup LspEFM
+    au!
+    autocmd User lsp_setup call lsp#register_server({
+        \ 'name': 'efm-langserver',
+        \ 'cmd': {server_info->['efm-langserver', '-c='.$HOME.'/.config/efm-langserver/config.yaml']},
+        \ 'whitelist': ['go'],
+        \ })
+  augroup END
+endif
+
