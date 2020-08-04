@@ -2,9 +2,12 @@
 " ==============================================================================
 let g:lsp_preview_doubletap = [function('lsp#ui#vim#output#closepreview')]
 let g:lsp_preview_autoclose = 0
-let g:lsp_insert_text_enabled = 0
+
 let g:lsp_highlight_references_enabled = 1
+highlight lspReference cterm=undercurl gui=undercurl
+
 let g:lsp_diagnostics_echo_cursor = 1
+
 let g:lsp_signs_enabled = 1
 let g:lsp_signs_error = {'text': '🧨'}
 let g:lsp_signs_warning = {'text': '⚠️'}
