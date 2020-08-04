@@ -2,37 +2,46 @@ let g:lsp_log_verbose = 0
 "let g:lsp_log_file = expand("~/vim-lsp.log")
 let g:lsp_log_file = ''
 
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-"imap <c-space> <Plug>(asyncomplete_force_refresh)
-"autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" Key mappings
+"   detail => h: vim-lsp-mapping
 
-" key mapps {{{
-"   To map keys to the feature of vim-lsp, use <plug> mappings:
-"   autocmd FileType python,go nmap gd <plug>(lsp-definition)
-"   detail help.
-"   h: vim-lsp-mapping
-
+" nnoremap <plug>(lsp-code-action)
+" nnoremap <plug>(lsp-code-lens)
+" nnoremap <plug>(lsp-declaration)
+" nnoremap <plug>(lsp-peek-declaration)
 nmap <buffer> <F12> <Plug>(lsp-definition)
 nmap <buffer> <C-]> <Plug>(lsp-definition)
-" nmap <buffer> XX <plug>(lsp-document-symbol)
-" nmap <buffer> XX <plug>(lsp-document-diagnostics)
+" nnoremap <plug>(lsp-document-symbol)
+" nnoremap <plug>(lsp-document-diagnostics)
 nmap <buffer> K <Plug>(lsp-hover)
-
+" nnoremap <plug>(lsp-next-diagnostic)
+" nnoremap <plug>(lsp-next-diagnostic-nowrap)
+" nnoremap <plug>(lsp-next-error)
+" nnoremap <plug>(lsp-next-error-nowrap)
 nmap <buffer> <C-n> <Plug>(lsp-next-reference)
+" nnoremap <plug>(lsp-next-warning)
+" nnoremap <plug>(lsp-next-warning-nowrap)
+" nnoremap <plug>(lsp-preview-close)
+" nnoremap <plug>(lsp-preview-focus)
+" nnoremap <plug>(lsp-previous-diagnostic)
+" nnoremap <plug>(lsp-previous-diagnostic-nowrap)
+" nnoremap <plug>(lsp-previous-error)
+" nnoremap <plug>(lsp-previous-error-nowrap)
+" nnoremap <plug>(lsp-previous-reference)
 nmap <buffer> <C-p> <Plug>(lsp-previous-reference)
-
-nmap <buffer> <C-S-n> <Plug>(lsp-next-error)
-nmap <buffer> <C-S-p> <Plug>(lsp-previous-error)
-
-nmap <buffer> <S-F12> <plug>(lsp-references)
+" nnoremap <plug>(lsp-previous-warning)
+" nnoremap <plug>(lsp-previous-warning-nowrap)
+" nnoremap <plug>(lsp-references)
 nmap <buffer> <S-F6> <plug>(lsp-rename)
-" nmap <buffer> XX <plug>(lsp-workspace-symbol)
+" nnoremap <plug>(lsp-workspace-symbol)
 nmap <buffer> =- <plug>(lsp-document-format)
-nmap <buffer> <F11> <plug>(lsp-implementation)
-nmap <buffer> <F2> <plug>(lsp-type-definition)
-" nmap <buffer> XX <plug>(lsp-status)
-" nmap <buffer> XX <plug>(lsp-code-action)
-
-
+" vnoremap <plug>(lsp-document-format)
+" nnoremap <plug>(lsp-document-range-format)
+" xnoremap <plug>(lsp-document-range-format)
+" nnoremap <plug>(lsp-implementation)
+" nnoremap <plug>(lsp-peek-implementation)
+" nnoremap <plug>(lsp-type-definition)
+nmap <buffer> <F2> <plug>(lsp-peek-type-definition)
+" nnoremap <plug>(lsp-type-hierarchy)
+" nnoremap <plug>(lsp-status)
+" nnoremap <plug>(lsp-signature-help)
