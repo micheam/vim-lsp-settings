@@ -13,6 +13,7 @@ let g:lsp_signs_error = {'text': '🧨'}
 let g:lsp_signs_warning = {'text': '⚠️'}
 let g:lsp_signs_information = {'text': 'ℹ️'}
 let g:lsp_signs_hint = {'text': '💡'}
+
 let g:lsp_async_completion = 1
 
 " highlight {{{1
@@ -41,7 +42,7 @@ if executable('gopls')
                     \ 'name': 'go-lang',
                     \ 'cmd': {server_info->['gopls']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'go.mod'))},
-                    \ 'whitelist': ['go'],
+                    \ 'allowlist': ['go'],
                     \ 'workspace_config': {'gopls': {
                     \     'staticcheck': v:false,
                     \     'completeUnimported': v:true,
@@ -65,7 +66,7 @@ elseif executable('bingo')
                     \ 'name': 'go-lang',
                     \ 'cmd': {server_info->['bingo', '-mode', 'stdio']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-                    \ 'whitelist': ['go'],
+                    \ 'allowlist': ['go'],
                     \ })
         autocmd FileType go setlocal omnifunc=lsp#complete
     augroup END
@@ -81,7 +82,7 @@ if executable('typescript-language-server')
                     \ 'name': 'javascript-language-server',
                     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-                    \ 'whitelist': ['javascript', 'javascript.jsx'],
+                    \ 'allowlist': ['javascript', 'javascript.jsx'],
                     \ })
         autocmd FileType javascript setlocal omnifunc=lsp#complete
     augroup END
@@ -97,7 +98,7 @@ if executable('typescript-language-server')
                     \ 'name': 'typescript-language-server',
                     \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
                     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-                    \ 'whitelist': ['typescript'],
+                    \ 'allowlist': ['typescript'],
                     \ })
         autocmd FileType typescript setlocal omnifunc=lsp#complete
     augroup END
@@ -112,7 +113,7 @@ if executable('efm-langserver')
     autocmd User lsp_setup call lsp#register_server({
         \ 'name': 'efm-langserver',
         \ 'cmd': {server_info->['efm-langserver', '-c='.$HOME.'/.config/efm-langserver/config.yaml']},
-        \ 'whitelist': ['go'],
+        \ 'allowlist': ['go'],
         \ })
   augroup END
 endif
